@@ -1,6 +1,6 @@
 # README
 
-This is a quick example Rails 5 app using GraphQL.
+This is a quick example Rails 5 app using GraphQL. I wanted to see if I could make a little API for some of my favorite things. So, this little app pulls together local Rails models, then scrapes https://classics.autotrader.com for classic Mustangs, then pulls from BreweryDB's JSON API. It was surprisingly easy to get up and running.
 
 ### Setup
 
