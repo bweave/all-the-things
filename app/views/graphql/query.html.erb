@@ -1,19 +1,14 @@
 <% @data.keys.each do |query| %>
-  <div class="page-header">
-    <h1><%= query.titleize %></h1>
-  </div>
-
-  <table>
-    <thead>
-      <tr>
-        <% @data[query].first.keys.each do |heading| %> 
-          <th><%= heading.titleize %></th>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= query.titleize %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="flex-grid thirds">
+        <% @data[query].each do |result| %>
+          <%= render "#{query}_panel", result: result %>
         <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% @data[query].each do |result| %>
-        <%= render "#{query}_row", result: result %>
-      <% end %>
-  </table>
+      </div>
+    </div>
+  </div>
 <% end %>

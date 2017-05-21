@@ -1,2 +1,28 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+.img-responsive {
+  min-width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+  .flex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      width: 32%;
+
+      .panel-footer {
+        margin-top: auto;
+      }
+    }
+  }
+}
+
+.view-more {
+  @extend .btn, .btn-primary, .btn-block;
+}
