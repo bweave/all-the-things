@@ -1,0 +1,24 @@
+<tr>
+  <% result.each do |key, val| %>
+    <% case key %>
+    <% when "title" %>
+      <% if result.has_key? "link" %>
+        <td><%= link_to val, result["link"] %></td>
+      <% else %>
+        <td><%= val %></td>
+      <% end %>
+    <% when "description" %>
+      <td><%= val %></td>
+    <% when "thumbnail" %>
+      <% if result.has_key? "link" %>
+        <td><%= link_to image_tag(val, alt: result["title"]), result["link"] %></td>
+      <% else %>
+        <td><%= image_tag(val, alt: result["title"]) %></td>
+      <% end %>
+    <% when "price" %>
+      <td style="text-align:right"><%= val %></td>
+    <% when "specs" %>
+      <td><%= val.join(",") %></td>
+    <% end %>
+  <% end %>
+</tr>

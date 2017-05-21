@@ -13,11 +13,7 @@
     </thead>
     <tbody>
       <% @data[query].each do |result| %>
-        <tr>
-          <% result.each do |k,v| %>
-            <td><%= v %></td>
-          <% end %>
-        </tr>
+        <%= render "#{query}_row", result: result %>
       <% end %>
   </table>
 <% end %>
