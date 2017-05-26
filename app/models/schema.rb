@@ -11,6 +11,18 @@ PostType = GraphQL::ObjectType.define do
 	field :body, !types.String
 end
 
+ClassicCamaroType = GraphQL::ObjectType.define do
+	name 'ClassicCamaro'
+	description 'A Classic Camaro listing from classics.autotrader.com'
+
+	field :link, !types.String, hash_key: "link"
+	field :thumbnail, !types.String, hash_key: "thumbnail"
+	field :title, !types.String, hash_key: "title"
+	field :price, !types.String, hash_key: "price"
+	field :description, !types.String, hash_key: "description"
+	field :specs, !types.String.to_list_type, hash_key: "specs"
+end
+
 ClassicMustangType = GraphQL::ObjectType.define do
 	name 'ClassicMustang'
 	description 'A Classic Mustang listing from classics.autotrader.com'
@@ -62,6 +74,30 @@ QueryType = GraphQL::ObjectType.define do
 	field :posts, types[PostType] do
 		resolve -> (obj, args, ctx) {
 			Post.all
+		}
+	end
+
+	field :classic_camaros, types[ClassicCamaroType] do
+		resolve -> (obj, args, ctx) {
+			results = Wombat.crawl do
+				base_url "https://classics.autotrader.com"
+				path "/classic-cars-for-sale/chevrolet-camaro-for-sale?year_from=1967&year_to=1969&price_from=10000&price_to=25000"
+
+				camaros "css=div.listing", :iterator do
+					link "css=.details", :html do |markup|
+						/href\s*=\s*"([^"]*)"/.match(markup)[1]
+					end
+					thumbnail "css=.thumbnail a", :html do |markup|
+						/src\s*=\s*"([^"]*)"/.match(markup)[1]
+					end
+					title css: "h3.model"
+					price css: "h4.price"
+					specs "css=ul.specs li", :list
+					description css: ".description"
+				end
+			end
+
+			results["camaros"]
 		}
 	end
 
