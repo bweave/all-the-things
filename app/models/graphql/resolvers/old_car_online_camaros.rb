@@ -15,6 +15,7 @@ module Resolvers
 					description "css=.result-link", :follow do
 						text "css=.description"
 					end
+					specs "", :list
 				end
 			end
 

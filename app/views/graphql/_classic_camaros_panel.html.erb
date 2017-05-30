@@ -1,16 +1,16 @@
 <div class="panel panel-default col">
   <%= link_to result["link"] || "#" do %>
-    <%= image_tag result["thumbnail"], class: "img-responsive" %>
+    <%= image_tag (result["thumbnail"] || "#"), class: "img-responsive" %>
   <% end %>
 
   <div class="panel-body">
     <p class="lead">
-    <%= result["title"] || "Mustang" %>
+    <%= result["title"] || "Camaro" %>
     <br>
     <small><%= result["price"] || "Unknown Price" %></small>
     </p>
 
-    <p><strong><%= result["specs"].join(", ") || "No specs..." %></strong></p>
+    <p><strong><%= result["specs"] ? result["specs"].join(", ") : "No specs..." %></strong></p>
 
     <p><%= result["description"] || "No description..."%></p>
   </div>
