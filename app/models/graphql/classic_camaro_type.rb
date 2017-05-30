@@ -1,4 +1,4 @@
-ClassicCamaro = GraphQL::ObjectType.define do
+ClassicCamaroType = GraphQL::ObjectType.define do
 	name 'ClassicCamaro'
 	description 'A Classic Camaro listing from classics.autotrader.com'
 

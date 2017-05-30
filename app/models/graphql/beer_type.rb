@@ -1,4 +1,4 @@
-Beer = GraphQL::ObjectType.define do
+BeerType = GraphQL::ObjectType.define do
 	name 'BeerType'
 	description 'A Beer listing from BreweryDB'
 
