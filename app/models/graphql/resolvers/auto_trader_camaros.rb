@@ -1,8 +1,8 @@
 require 'wombat'
 
 module Resolvers
-	class ClassicCamaros
-		def call(_,_,_)
+	class AutoTraderCamaros
+		def fetch
 			results = Wombat.crawl do
 				base_url "https://classics.autotrader.com"
 				path "/classic-cars-for-sale/chevrolet-camaro-for-sale?year_from=1967&year_to=1969&price_from=10000&price_to=25000"
@@ -21,7 +21,7 @@ module Resolvers
 				end
 			end
 
-			results["camaros"]
+			results
 		end
 	end
 end

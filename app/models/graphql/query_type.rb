@@ -13,7 +13,7 @@ QueryType = GraphQL::ObjectType.define do
 	end
 
 	field :classic_camaros, types[ClassicCamaroType] do
-		resolve Resolvers::ClassicCamaros.new
+		resolve Resolvers::Camaros.new
 	end
 
 	field :classic_mustangs , types[ClassicMustangType] do
