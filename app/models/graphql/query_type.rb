@@ -17,7 +17,7 @@ QueryType = GraphQL::ObjectType.define do
 	end
 
 	field :classic_mustangs , types[ClassicMustangType] do
-		resolve Resolvers::ClassicMustangs.new
+		resolve Resolvers::Mustangs.new
 	end
 
 	field :search_beers, types[BeerType] do

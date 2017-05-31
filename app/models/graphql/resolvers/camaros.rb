@@ -1,10 +1,10 @@
 module Resolvers
 	class Camaros
 		def call(obj, args, ctx)
-			auto_trader_results = AutoTraderCamaros.new.fetch
-			old_car_online_results = OldCarOnlineCamaros.new.fetch
+			auto_trader = AutoTraderCamaros.new.fetch
+			old_car_online = OldCarOnlineCamaros.new.fetch
 
-			auto_trader_results["camaros"] + old_car_online_results["camaros"]
+			auto_trader["camaros"] + old_car_online["camaros"]
 		end
 	end
 end
